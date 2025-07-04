@@ -259,7 +259,7 @@ for table in tables:
 conn.commit()
 
 # Groq API setup
-groq_api_key = os.getenv('GROQ_API_KEY', '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')
+groq_api_key = os.getenv("GROQ_API_KEY")
 if groq_api_key:
     chat = ChatGroq(temperature=0, model="llama-3.3-70b-versatile", api_key=groq_api_key)
     llm = ChatGroq(model="llama-3.3-70b-versatile", api_key=groq_api_key)
@@ -293,6 +293,7 @@ prompt_doc_analyzer = ChatPromptTemplate.from_messages([("system", system_doc_an
 system_argument_generator = "You are a legal strategist specializing in generating compelling legal arguments. Provide both supporting arguments and potential counterarguments with relevant case law and statutory provisions."
 human_argument_generator = "Generate legal arguments for: {case_details}. Include supporting case law, relevant sections, and strategic considerations."
 prompt_argument_generator = ChatPromptTemplate.from_messages([("system", system_argument_generator), ("human", human_argument_generator)])
+
 # Document templates
 DOCUMENT_TEMPLATES = {
     "Rental Agreement": {
